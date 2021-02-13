@@ -20,6 +20,7 @@ namespace Todo.Domain.RequestModels.CommandRequestModels
             Title = title;
             User = user;
             Date = date;
+            _validator = new CreateTodoRequestModelValidator();
         }
 
         public string Title { get; set; }
