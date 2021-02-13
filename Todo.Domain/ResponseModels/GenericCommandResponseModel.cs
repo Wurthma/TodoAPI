@@ -2,11 +2,11 @@ using Todo.Domain.Interfaces.ICommandHandlers;
 
 namespace Todo.Domain.ResponseModels
 {
-    public class GenericCommandResponse : IGenericCommandResponse
+    public class GenericCommandResponseModel : IGenericCommandResponse
     {
-        public GenericCommandResponse(){}
+        public GenericCommandResponseModel(){}
 
-        public GenericCommandResponse(bool success, string message, object data)
+        public GenericCommandResponseModel(bool success, string message, object data)
         {
             Success = success;
             Message = message;

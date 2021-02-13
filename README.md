@@ -2,7 +2,20 @@
 
 Dotnet API com uso de CQRS, MediatR, EF, DDD, Testes unitários, etc
 
+## Estrutura do projeto
+- Domain
+- Api (Application)
+- Infra
+- Tests
+
 # Exemplos importantes:
+
+### CQRS e MediatR
+
+Basicamente temos dois componentes principais chamados de Request e Handler, que implementamos através das interfaces `IRequest` e `IRequestHandler<TRequest>` respectivamente.
+
+- Request (ou Command) → mensagem que será processada.
+- Handler → responsável por processar determinada(s) mensagen(s).
 
 ### Configurando o MediatR
 
@@ -19,3 +32,7 @@ public void ConfigureServices(IServiceCollection services)
 	// ...
 }
 ```
+
+### Repository Pattern
+
+De forma resumida, aplicamos o repository pattern no projeto deixando o Domain o mais puro possível. OU seja, ele não depende da implementação mas da abstração (baixo acoplamento).

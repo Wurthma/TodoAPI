@@ -1,8 +1,9 @@
 using System;
+using MediatR;
 
 namespace Todo.Domain.RequestModels.CommandRequestModels
 {
-    public class UpdateTodoRequestModel
+    public class UpdateTodoRequestModel : IRequest
     {
         public UpdateTodoRequestModel(){ }
 
