@@ -20,10 +20,10 @@ Basicamente temos dois componentes principais chamados de Request e Handler, que
 ### Configurando o MediatR
 
 - Para utilizar o MediatR no dotnet core ou superior é necessário instalar os seguintes pacotes:
-	`dotnet add package MediatR`
-	`dotnet add package MediatR.Extensions.Microsoft.DependencyInjection`
+	- `dotnet add package MediatR`
+	- `dotnet add package MediatR.Extensions.Microsoft.DependencyInjection`
 
-- No registre o MediatR no **Startup.cs**:
+- Rgistre o MediatR no **Startup.cs**:
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
@@ -41,7 +41,8 @@ De forma resumida, aplicamos o repository pattern no projeto deixando o Domain o
 
 **VS Code**
 Antes de realizar um migration verifique a versão atual do EF Tool, deve estar com a mesma versão do EF Core utilizado no projeto.
-Para verificar a versão execute: `dotnet ef`
-Para remover a versão atual instalada, execute: `dotnet tool uninstall --global dotnet-ef`
-Para instalar a versão mais recente, execute: `dotnet tool install --global dotnet-ef`
-Para executar um migration, execute: `dotnet ef migrations add NomeDaMinhaMigration --startup-project ..\Todo.Domain.Api\`
+
+- Para verificar a versão execute: `dotnet ef`
+- Para remover a versão atual instalada, execute: `dotnet tool uninstall --global dotnet-ef`
+- Para instalar a versão mais recente, execute: `dotnet tool install --global dotnet-ef`
+- Para executar um migration, execute: `dotnet ef migrations add NomeDaMinhaMigration --startup-project ..\Todo.Domain.Api\`
