@@ -6,6 +6,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MediatR;
 using System.Reflection;
+using Todo.Domain.Infra.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace Todo.Domain.Api
 {
@@ -21,6 +23,8 @@ namespace Todo.Domain.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+
             services.AddMediatR(Assembly.GetExecutingAssembly());
             
             services.AddControllers();
@@ -43,7 +47,14 @@ namespace Todo.Domain.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            // Permitir acessos localhost para aplicação
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
