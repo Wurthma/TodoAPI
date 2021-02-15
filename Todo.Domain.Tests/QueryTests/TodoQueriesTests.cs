@@ -22,7 +22,7 @@ namespace Todo.Domain.Tests.EntityTests
         }
 
         [Fact]
-        public void Dada_a_consulta_deve_retornar_tarefas_apenas_do_usuario_andrebaltieri()
+        public void Dada_a_consulta_deve_retornar_tarefas_apenas_do_usuario_wurthmann()
         {
             var result = _items.AsQueryable().Where(TodoQueries.GetAll("wurthmann"));
             Assert.Equal(2, result.Count());

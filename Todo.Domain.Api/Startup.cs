@@ -8,6 +8,8 @@ using MediatR;
 using System.Reflection;
 using Todo.Domain.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Todo.Domain.Repositories;
+using Todo.Domain.Infra.Repositories;
 
 namespace Todo.Domain.Api
 {
@@ -24,6 +26,8 @@ namespace Todo.Domain.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+
+            services.AddTransient<ITodoRepository, TodoRepository>();
 
             services.AddMediatR(Assembly.GetExecutingAssembly());
             

@@ -7,7 +7,7 @@ namespace Todo.Domain.Tests.CommandTests
     public class CreateTodoCommandTests
     {
         private readonly CreateTodoRequestModel _invalidCommand = new CreateTodoRequestModel("", "", DateTime.Now);
-        private readonly CreateTodoRequestModel _validCommand = new CreateTodoRequestModel("Título da Tarefa", "andrebaltieri", DateTime.Now);
+        private readonly CreateTodoRequestModel _validCommand = new CreateTodoRequestModel("Título da Tarefa", "wurthmann", DateTime.Now);
 
         public CreateTodoCommandTests()
         {

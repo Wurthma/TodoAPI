@@ -12,7 +12,7 @@ namespace Todo.Domain.Tests.HandlerTests
     public class CreateTodoHandlerTests
     {
         private readonly CreateTodoRequestModel _invalidCommand = new CreateTodoRequestModel("", "", DateTime.Now);
-        private readonly CreateTodoRequestModel _validCommand = new CreateTodoRequestModel("Título da Tarefa", "andrebaltieri", DateTime.Now);
+        private readonly CreateTodoRequestModel _validCommand = new CreateTodoRequestModel("Título da Tarefa", "wurthmann", DateTime.Now);
         private readonly TodoHandler _handler = new TodoHandler(new FakeTodoRepository());
         private GenericCommandResponseModel _result = new GenericCommandResponseModel();
 
