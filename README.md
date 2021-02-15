@@ -36,3 +36,12 @@ public void ConfigureServices(IServiceCollection services)
 ### Repository Pattern
 
 De forma resumida, aplicamos o repository pattern no projeto deixando o Domain o mais puro possível. OU seja, ele não depende da implementação mas da abstração (baixo acoplamento).
+
+### Entity Framework Core 5
+
+**VS Code**
+Antes de realizar um migration verifique a versão atual do EF Tool, deve estar com a mesma versão do EF Core utilizado no projeto.
+Para verificar a versão execute: `dotnet ef`
+Para remover a versão atual instalada, execute: `dotnet tool uninstall --global dotnet-ef`
+Para instalar a versão mais recente, execute: `dotnet tool install --global dotnet-ef`
+Para executar um migration, execute: `dotnet ef migrations add NomeDaMinhaMigration --startup-project ..\Todo.Domain.Api\`
