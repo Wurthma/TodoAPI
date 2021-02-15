@@ -10,6 +10,7 @@ using Todo.Domain.Infra.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Todo.Domain.Repositories;
 using Todo.Domain.Infra.Repositories;
+using System.IO;
 
 namespace Todo.Domain.Api
 {
@@ -20,12 +21,13 @@ namespace Todo.Domain.Api
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+            //services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+            services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("TodoConnectionString")));
 
             services.AddTransient<ITodoRepository, TodoRepository>();
 
@@ -41,6 +43,13 @@ namespace Todo.Domain.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            Configuration = builder.Build();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
