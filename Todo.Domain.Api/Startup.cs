@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Todo.Domain.Repositories;
 using Todo.Domain.Infra.Repositories;
 using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Todo.Domain.Api
 {
@@ -34,6 +36,26 @@ namespace Todo.Domain.Api
             services.AddMediatR(Assembly.GetExecutingAssembly());
             
             services.AddControllers();
+
+            services.AddResponseCompression();
+
+            // Safe storage of app secrets in development in ASP.NET Core
+            var firebaseWebAppName = Configuration["Firebase:WebAppName"];
+            
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.Authority = $@"https://securetoken.ggoogle.com/{firebaseWebAppName}";
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = $@"https://securetoken.ggoogle.com/{firebaseWebAppName}",
+                    ValidateAudience = true,
+                    ValidAudience = firebaseWebAppName,
+                    ValidateLifetime = true
+                };
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Todo.Domain.Api", Version = "v1" });

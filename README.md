@@ -47,3 +47,8 @@ Antes de realizar um migration no projeto de **Infra** verifique a versão atual
 - Para instalar a versão mais recente, execute: `dotnet tool install --global dotnet-ef`
 - Para executar um migration, execute: `dotnet ef migrations add NomeDaMinhaMigration --startup-project ..\Todo.Domain.Api\`
 - Para atualizar o DB, execute: `dotnet ef database update --startup-project ..\Todo.Domain.Api\`
+
+### Autenticação JWT Bearer
+
+- `Microsoft.AspNetCore.Authentication.JwtBearer`
+- Uso de Secrets para armazenar dados sensíveis referente ao Firebase para autenticação com google (https://docs.microsoft.com/pt-br/aspnet/core/security/app-secrets?view=aspnetcore-5.0&tabs=windows)
