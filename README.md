@@ -40,9 +40,10 @@ De forma resumida, aplicamos o repository pattern no projeto deixando o Domain o
 ### Entity Framework Core 5
 
 **VS Code**
-Antes de realizar um migration verifique a versão atual do EF Tool, deve estar com a mesma versão do EF Core utilizado no projeto.
+Antes de realizar um migration no projeto de **Infra** verifique a versão atual do EF Tool, deve estar com a mesma versão do EF Core utilizado no projeto.
 
 - Para verificar a versão execute: `dotnet ef`
 - Para remover a versão atual instalada, execute: `dotnet tool uninstall --global dotnet-ef`
 - Para instalar a versão mais recente, execute: `dotnet tool install --global dotnet-ef`
 - Para executar um migration, execute: `dotnet ef migrations add NomeDaMinhaMigration --startup-project ..\Todo.Domain.Api\`
+- Para atualizar o DB, execute: `dotnet ef database update --startup-project ..\Todo.Domain.Api\`
